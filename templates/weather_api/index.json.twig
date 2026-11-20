@@ -1,0 +1,16 @@
+{
+    "city": "{{ city }}",
+    "country": "{{ country }}",
+    "measurements": [
+        {% for m in measurements %}
+        {
+            "date": "{{ m.date|date('Y-m-d') }}",
+            "celsius": {{ m.temperature }},
+            "fahrenheit": {{ m.fahrenheit }},
+            "humidity": {{ m.humidity }},
+            "precipitation": {{ m.precipitation }},
+            "wind": {{ m.wind }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
